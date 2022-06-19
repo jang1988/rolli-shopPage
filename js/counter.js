@@ -1,9 +1,12 @@
 // Добавляем прослушку на всем окне
 
 window.addEventListener('click', function () {
-  console.log('www');
 
-  console.log(event.target);
-
+  if (event.target.dataset.action === 'plus') {
+    console.log('Plus');
+  }
   
+  if (event.target.dataset.action === 'minus') {
+    console.log('Minus');
+  }
 });
