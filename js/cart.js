@@ -64,5 +64,8 @@ window.addEventListener("click", function (event) {
       // Отобразим товар в корзине
       cartWrapper.insertAdjacentHTML("beforeend", cartItemHtml);
     }
+
+    // Сбрасываем счетчик добавленного товара на 0
+    card.querySelector('[data-counter]').innerText = '0';
   }
 });
