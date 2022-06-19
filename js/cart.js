@@ -18,8 +18,21 @@ window.addEventListener("click", function (event) {
       counter: card.querySelector("[data-counter]").innerText,
     };
 
-    // Собранные данные поставим в шаблон для товара в корзине
-    const cartItemHtml = `<div class="cart-item" data-id="${productInfo.id}">
+    // Проверяем есть ли такой товар в аорзине
+    const itemInCart = cartWrapper.querySelector(
+      `[data-id="${productInfo.id}"]`
+    );
+
+    // Если товар есть в корзине
+    if (itemInCart) {
+      const counterElement = itemInCart.querySelector("[data-counter]");
+      counterElement.innerText =
+        parseInt(counterElement.innerText) + parseInt(productInfo.counter);
+    } else {
+      //Если товара нет в корзине
+
+      // Собранные данные поставим в шаблон для товара в корзине
+      const cartItemHtml = `<div class="cart-item" data-id="${productInfo.id}">
                             <div class="cart-item__top">
                               <div class="cart-item__img">
                                 <img src="${productInfo.imgSrc}" alt="${productInfo.title}">
@@ -48,7 +61,8 @@ window.addEventListener("click", function (event) {
                             </div>
                           </div>`;
 
-    // Отобразим товар в корзине
-    cartWrapper.insertAdjacentHTML("beforeend", cartItemHtml);
+      // Отобразим товар в корзине
+      cartWrapper.insertAdjacentHTML("beforeend", cartItemHtml);
+    }
   }
 });
