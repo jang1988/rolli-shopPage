@@ -29,7 +29,10 @@ window.addEventListener("click", function (event) {
     // проверяем  чтобы счетчик быд больше 0
     if (parseInt(counter.innerText) > 0) {
       counter.innerText = --counter.innerText;
-    }
+      // Проверка на товар который находиться в корзине
+    } else if (event.target.closest('.cart-wrapper') && parseInt(counter.innerText) === 0 ) {
+      // Удаляем товар из корзины
+      event.target.closest('.cart-item').remove();
+    }     
   }
-
 })
