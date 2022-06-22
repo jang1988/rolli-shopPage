@@ -63,6 +63,8 @@ window.addEventListener("click", function (event) {
 
       // Отобразим товар в корзине
       cartWrapper.insertAdjacentHTML("beforeend", cartItemHtml);
+
+      toggleCartStatus();
     }
 
     // Сбрасываем счетчик добавленного товара на 0

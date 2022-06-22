@@ -1,5 +1,4 @@
 // Добавляем прослушку на всем окне
-
 window.addEventListener("click", function (event) {
 
   // Обьявляем переменую для счетчика
