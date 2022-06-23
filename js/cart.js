@@ -64,10 +64,14 @@ window.addEventListener("click", function (event) {
       // Отобразим товар в корзине
       cartWrapper.insertAdjacentHTML("beforeend", cartItemHtml);
 
+      // Отображение статуса корзины Пустая \ Полная
       toggleCartStatus();
     }
 
     // Сбрасываем счетчик добавленного товара на 0
-    card.querySelector('[data-counter]').innerText = '0';
+    card.querySelector('[data-counter]').innerText = '1';
+
+    // Пересчёт общей стоимости товаров в корзине
+    calcCartPrice();
   }
 });

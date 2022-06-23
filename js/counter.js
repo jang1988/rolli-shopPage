@@ -1,6 +1,5 @@
 // Добавляем прослушку на всем окне
 window.addEventListener("click", function (event) {
-
   // Обьявляем переменую для счетчика
   let counter;
 
@@ -26,12 +25,30 @@ window.addEventListener("click", function (event) {
 
     const counter = counterWrapper.querySelector("[data-counter]");
     // проверяем  чтобы счетчик быд больше 0
-    if (parseInt(counter.innerText) > 0) {
+    if (parseInt(counter.innerText) > 1) {
       counter.innerText = --counter.innerText;
       // Проверка на товар который находиться в корзине
-    } else if (event.target.closest('.cart-wrapper') && parseInt(counter.innerText) === 0 ) {
+    } else if (
+      event.target.closest(".cart-wrapper") &&
+      parseInt(counter.innerText) === 1
+    ) {
       // Удаляем товар из корзины
-      event.target.closest('.cart-item').remove();
-    }     
+      event.target.closest(".cart-item").remove();
+
+      // Отображение статуса корзины Пустая \ Полная
+      toggleCartStatus();
+
+      // Пересчёт общей стоимости товаров в корзине
+      calcCartPrice();
+    }
   }
-})
+
+  // Проверяем на клик + или - внутри корзины
+  if (
+    event.target.hasAttribute("data-action") &&
+    event.target.closest(".cart-wrapper")
+  ) {
+    // Пересчёт общей стоимости товаров в корзине
+    calcCartPrice();
+  }
+});
